@@ -108,35 +108,35 @@ Step 3 - Proxmox LXC creation
 
 ###### Creating the container:
 
-![](/home/daniele/PycharmProjects/proxmoxOnRPI5/images/createContainer.png)
+![](images/createContainer.png)
 
 1. click on `Create CT` in the top right corner
 
-![](/home/daniele/PycharmProjects/proxmoxOnRPI5/images/createCT_General1.png)
+![](images/createCT_General1.png)
 
 2. in the `Hostname` textbox write the container name, in my case `debian`
 
-![](/home/daniele/PycharmProjects/proxmoxOnRPI5/images/createCT_General2.png)
+![](images/createCT_General2.png)
 
 3. set a password and confirm it, then click Next
 
-![](/home/daniele/PycharmProjects/proxmoxOnRPI5/images/createCT_Template.png)
+![](images/createCT_Template.png)
 
 4. in the `Template` select the `OS_PROXMOX_DEBIAN12.tar.xz` file you've downloaded early, then click Next
 
-![](/home/daniele/PycharmProjects/proxmoxOnRPI5/images/createCT_Disks.png)
+![](images/createCT_Disks.png)
 
 5. select the disk size and click Next
 
-![](/home/daniele/PycharmProjects/proxmoxOnRPI5/images/createCT_CPU.png)
+![](images/createCT_CPU.png)
 
 6. select the number of cores and click Next
 
-![](/home/daniele/PycharmProjects/proxmoxOnRPI5/images/createCT_Memory.png)
+![](/images/createCT_Memory.png)
 
 7. choose how much RAM and SWAP your container should have and click Next
 
-![](/home/daniele/PycharmProjects/proxmoxOnRPI5/images/createCT_Network.png)
+![](images/createCT_Network.png)
 
 8. leave the network and the DNS as it is and click Next. Then click Finish to create the container
 
