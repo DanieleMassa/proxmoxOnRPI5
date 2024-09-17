@@ -7,8 +7,6 @@ Step-by-step guide to install a proxmox port on the rpi5
 
 <!-- TOC -->
 * [Proxmox on Raspberry Pi 5](#proxmox-on-raspberry-pi-5)
-  * [Step-by-step guide to install a proxmox port on the rpi5](#step-by-step-guide-to-install-a-proxmox-port-on-the-rpi5)
-      * [This has been written after my troubleshooting, so the only source I can mention is this.](#this-has-been-written-after-my-troubleshooting-so-the-only-source-i-can-mention-is-this)
   * [Prerequisites](#prerequisites)
   * [Step 1 - Preparation](#step-1---preparation)
   * [Step 2 - Proxmox installation](#step-2---proxmox-installation)
@@ -16,7 +14,8 @@ Step-by-step guide to install a proxmox port on the rpi5
   * [Step 3 - Proxmox LXC creation](#step-3---proxmox-lxc-creation)
       * [Follow these steps to create a Proxmox container:](#follow-these-steps-to-create-a-proxmox-container)
           * [Adding the CT Template:](#adding-the-ct-template)
-          * [Adding the CT Template (via GUI):](#adding-the-ct-template-via-gui)
+          * [Creating the container:](#creating-the-container)
+  * [Step 4 - Proxmox VM creation](#step-4---proxmox-vm-creation)
 <!-- TOC -->
 
 Prerequisites
