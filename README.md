@@ -3,7 +3,8 @@
 Step-by-step guide to install a proxmox port on the rpi5
 ----------
 
-#### This has been written after my troubleshooting, so the only source I can mention are [this](https://github.com/pimox/pimox7) one and [this](https://mirrors.apqa.cn) one. The debian template has been downloaded from [this](https://mirrors.apqa.cn/proxmox/) website
+#### This has been written after my troubleshooting, so the only source I can mention are [this](https://github.com/pimox/pimox7) one and [this](https://mirrors.apqa.cn) one.
+#### The debian template has been downloaded from [this](https://mirrors.apqa.cn/proxmox/) website
 
 <!-- TOC -->
 * [Proxmox on Raspberry Pi 5](#proxmox-on-raspberry-pi-5)
