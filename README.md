@@ -194,3 +194,48 @@ Step 4 - Proxmox VM creation
 14. Now run the VM and install the system, after that go back on the `Boot Order` menu and place back the VM drive on top, after this you can use the vm
 
 ![](images/createVM_FinalBootOrder.png)
+
+Miscellaneous
+--------
+
+
+#### Deactivate all LEDs
+
+If you want to turn off all LEDs on the pi, follow these steps:
+
+1. Open the shell and type `nano /boot/firmware/config.txt`
+2. Go to the end of the file, under the  `[all]` section and add the following lines:
+
+```
+dtparam=pwr_led_trigger=default-on
+dtparam=pwr_led_activelow=off
+dtparam=act_led_trigger=none
+dtparam=act_led_activelow=off
+dtparam=eth_led0=4
+dtparam=eth_led1=4
+```
+
+3. Save and reboot
+
+#### LXC Filesystem Trimming
+It may happen that you fill a container with data, then you empty it, and you may notice that on the home Summary page of the node the disk usage hasn't been updated. Here's the solution:
+1. Open the shell
+2. run `bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/fstrim.sh)"` ([source](https://tteck.github.io/Proxmox/#proxmox-ve-lxc-filesystem-trim))
+
+#### Add subscription
+1. Once proxmox is installed, you should add a subscription to receive updates, so click on the warning and then on `Add`
+
+![](images/addRepo.png)
+
+2. Now select `No-Subscription` and click on `Add`
+
+![](images/subscription_NoSubscription.png)
+
+3. Open the shell and run `apt update && apt upgrade -y`
+
+#### Sticky subscription alert
+It might happen that the subscription alert after logging in doesn't disappear after clicking on `OK`. Here's the solution:
+1. Open the shell
+2. Type `passwd`
+3. Enter the current proxmox password (which is the root password)
+4. Try logging back in
