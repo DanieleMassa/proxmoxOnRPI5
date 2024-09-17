@@ -3,18 +3,17 @@
 Step-by-step guide to install a proxmox port on the rpi5
 ----------
 
-#### This has been written after my troubleshooting, so the only source I can mention is [this](https://github.com/pimox/pimox7).
+#### This has been written after my troubleshooting, so the only source I can mention are [this](https://github.com/pimox/pimox7) one and [this](https://mirrors.apqa.cn) one. The debian template has been downloaded from [this](https://mirrors.apqa.cn/proxmox/) website
 
 <!-- TOC -->
 * [Proxmox on Raspberry Pi 5](#proxmox-on-raspberry-pi-5)
-  * [Prerequisites](#prerequisites)
+   * [Prerequisites](#prerequisites)
   * [Step 1 - Preparation](#step-1---preparation)
   * [Step 2 - Proxmox installation](#step-2---proxmox-installation)
-      * [Run the following commands:](#run-the-following-commands)
   * [Step 3 - Proxmox LXC creation](#step-3---proxmox-lxc-creation)
-      * [Follow these steps to create a Proxmox container:](#follow-these-steps-to-create-a-proxmox-container)
-          * [Adding the CT Template:](#adding-the-ct-template)
-          * [Creating the container:](#creating-the-container)
+      * [Follow these steps to create a Proxmox container](#follow-these-steps-to-create-a-proxmox-container)
+          * [Adding the CT Template](#adding-the-ct-template)
+          * [Creating the container](#creating-the-container)
   * [Step 4 - Proxmox VM creation](#step-4---proxmox-vm-creation)
   * [Miscellaneous](#miscellaneous)
       * [Deactivate all LEDs](#deactivate-all-leds)
@@ -39,7 +38,7 @@ When the SD is ready plug it into the SD card reader, plug the ethernet cable, t
 Step 2 - Proxmox installation
 --------
 
-#### Run the following commands:
+#### Run the following commands
 
 1. `sudo -s`
 2. `apt update`
@@ -100,9 +99,9 @@ Change the second ip address with the one you've set in the `/etc/network/interf
 Step 3 - Proxmox LXC creation
 --------
 
-#### Follow these steps to create a Proxmox container:
+#### Follow these steps to create a Proxmox container
 
-###### Adding the CT Template:
+###### Adding the CT Template
 
 1. ssh into the pi. now use the root address, so in my case `ssh root@192.168.1.100`
 2. install git using `apt install git`
@@ -110,7 +109,7 @@ Step 3 - Proxmox LXC creation
 2. `cd proxmoxOnRPI5`
 3. `mv OS_PROXMOX_DEBIAN12.tar.xz /var/lib/vz/template/cache/`
 
-###### Creating the container:
+###### Creating the container
 
 1. Click on `Create CT` in the top right corner
 
@@ -244,3 +243,5 @@ It might happen that the subscription alert after logging in doesn't disappear a
 2. Type `passwd`
 3. Enter the current proxmox password (which is the root password)
 4. Try logging back in
+
+
