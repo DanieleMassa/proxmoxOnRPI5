@@ -19,7 +19,7 @@ Step-by-step guide to install a proxmox port on the rpi5
       * [Deactivate all LEDs](#deactivate-all-leds)
       * [LXC Filesystem Trimming](#lxc-filesystem-trimming)
       * [Add subscription](#add-subscription)
-      * [Sticky subscription alert](#sticky-subscription-alert)
+      * [Disable sticky subscription alert](#sticky-subscription-alert)
 <!-- TOC -->
 
 Prerequisites
@@ -237,7 +237,7 @@ It may happen that you fill a container with data, then you empty it, and you ma
 
 3. Open the shell and run `apt update && apt upgrade -y`
 
-#### Sticky subscription alert
+#### Disable sticky subscription alert
 It might happen that the subscription alert after logging in doesn't disappear after clicking on `OK`. Here's the solution:
 1. Open the shell
 2. Type `passwd`
