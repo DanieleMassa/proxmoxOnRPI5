@@ -110,35 +110,35 @@ Step 3 - Proxmox LXC creation
 
 ![](images/createContainer.png)
 
-1. click on `Create CT` in the top right corner
+1. Click on `Create CT` in the top right corner
 
 ![](images/createCT_General1.png)
 
-2. in the `Hostname` textbox write the container name, in my case `debian`
+2. In the `Hostname` textbox write the container name, in my case `debian`
 
 ![](images/createCT_General2.png)
 
-3. set a password and confirm it, then click Next
+3. Set a password and confirm it, then click Next
 
 ![](images/createCT_Template.png)
 
-4. in the `Template` select the `OS_PROXMOX_DEBIAN12.tar.xz` file you've downloaded early, then click Next
+4. In the `Template` select the `OS_PROXMOX_DEBIAN12.tar.xz` file you've downloaded early, then click Next
 
 ![](images/createCT_Disks.png)
 
-5. select the disk size and click Next
+5. Select the disk size and click Next
 
 ![](images/createCT_CPU.png)
 
-6. select the number of cores and click Next
+6. Select the number of cores and click Next
 
 ![](/images/createCT_Memory.png)
 
-7. choose how much RAM and SWAP your container should have and click Next
+7. Choose how much RAM and SWAP your container should have and click Next
 
 ![](images/createCT_Network.png)
 
-8. leave the network and the DNS as it is and click Next. Then click Finish to create the container
+8. Leave the network and the DNS as it is and click Next. Then click Finish to create the container
 
 
 
