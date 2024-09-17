@@ -16,6 +16,11 @@ Step-by-step guide to install a proxmox port on the rpi5
           * [Adding the CT Template:](#adding-the-ct-template)
           * [Creating the container:](#creating-the-container)
   * [Step 4 - Proxmox VM creation](#step-4---proxmox-vm-creation)
+  * [Miscellaneous](#miscellaneous)
+      * [Deactivate all LEDs](#deactivate-all-leds)
+      * [LXC Filesystem Trimming](#lxc-filesystem-trimming)
+      * [Add subscription](#add-subscription)
+      * [Sticky subscription alert](#sticky-subscription-alert)
 <!-- TOC -->
 
 Prerequisites
