@@ -5,6 +5,19 @@ Step-by-step guide to install a proxmox port on the rpi5
 
 #### This has been written after my troubleshooting, so the only source I can mention is [this](https://github.com/pimox/pimox7).
 
+<!-- TOC -->
+* [Proxmox on Raspberry Pi 5](#proxmox-on-raspberry-pi-5)
+  * [Step-by-step guide to install a proxmox port on the rpi5](#step-by-step-guide-to-install-a-proxmox-port-on-the-rpi5)
+      * [This has been written after my troubleshooting, so the only source I can mention is this.](#this-has-been-written-after-my-troubleshooting-so-the-only-source-i-can-mention-is-this)
+  * [Prerequisites](#prerequisites)
+  * [Step 1 - Preparation](#step-1---preparation)
+  * [Step 2 - Proxmox installation](#step-2---proxmox-installation)
+      * [Run the following commands:](#run-the-following-commands)
+  * [Step 3 - Proxmox LXC creation](#step-3---proxmox-lxc-creation)
+      * [Follow these steps to create a Proxmox container:](#follow-these-steps-to-create-a-proxmox-container)
+          * [Adding the CT Template:](#adding-the-ct-template)
+          * [Adding the CT Template (via GUI):](#adding-the-ct-template-via-gui)
+<!-- TOC -->
 
 Prerequisites
 ---------
@@ -22,10 +35,11 @@ When the SD is ready plug it into the SD card reader, plug the ethernet cable, t
 Step 2 - Proxmox installation
 --------
 
-Run the following commands:
+#### Run the following commands:
+
 1. `sudo -s`
 2. `apt update`
-3. `apt upgrade`
+3. `apt upgrade -y`
 4. `curl https://mirrors.apqa.cn/proxmox/debian/pveport.gpg -o
 /etc/apt/trusted.gpg.d/pveport.gpg` if this results in an error, remove the `https` and try with `http`
 5. `echo "deb https://mirrors.apqa.cn/proxmox/debian/pve bookworm port" | tee -a
@@ -33,7 +47,7 @@ Run the following commands:
 6. `apt update`
 7. `apt dist-upgrade -y`
 8. `nano /etc/network/interfaces`
-9. inside write:
+9. inside comment everything and write:
 ```
 auto lo
 iface lo inet loopback
@@ -52,25 +66,46 @@ In the address write an ip for proxmox (choose one that is unused on your local 
 In the gateway put the router ip
 
 10. `nano /etc/hosts`
-11. inside write:
+11. delete everything inside and write:
 ```
-127.0.0.1   localhost
-192.168.1.100 raspberrypi
+127.0.0.1       localhost
+192.168.1.100   raspberrypi
 ```
 Change the second ip address with the one you've set in the `/etc/network/interfaces` file and `raspberrypi` with the hostname you've written down during the installation (or use `hostname` to find it)
 
 12. `reboot now`
 13. `sudo -s`
-14. `apt install pve-qemu-kvm proxmox-ve` (if you face any issue, try insalling `pve-qemu-kvm` first and then `proxmox-ve`)
+14. `apt install pve-qemu-kvm proxmox-ve -y` if you face any issue, try installing `pve-qemu-kvm` first and then `proxmox-ve`
 15. `reboot now`
 16. `sudo -s`
 17. `curl https://raw.githubusercontent.com/pimox/pimox7/master/RPiOS64-IA-Install.sh > installer.sh`
 18. `chmod +x installer.sh`
 19. `./installer.sh`
-20. after having followed all the prompts and rebooted, run:
-21. `sudo -s`
-22. `apt upgrade -y`
-23. `reboot now`
-24. now open the ip address specified in the `/etc/network/interfaces` file, followed by the port 8006. In my case: `https://192.168.1.100:8006`
-25. Proxmox has successfully been installed and is redy to use
+20. Now there will be asked some questions:
+21. `Enter new hostname e.g. RPi4-01-PVE :` enter the hostname (or a new one) you have written down during the installation, in my case: `raspberrypi`
+22. `Enter new static IP and NETMASK e.g. 192.168.0.100/24 :` enter the ip and the netmask set in the file `/etc/network/interfaces`, in my case: `192.168.1.100/24`
+23. `Is 192.168.1.1 the correct gateway ?  y / n :` check if the gateway shown matches the gateway set in the file `/etc/network/interfaces`
+24. `YOU ARE OKAY WITH THESE CHANGES ? YOUR DECLARATIONS ARE CORRECT ? CONTINUE ? y / n : ` check if everything is fine, then reply `y`
+25. after this, set the root password and wait until it reboots
+26. after having logged in run `sudo -s`
+27. `apt upgrade -y`
+28. `reboot now`
+29. now open the ip address specified in the `/etc/network/interfaces` file followed by the port 8006 in your browser on your computer. In my case: `https://192.168.1.100:8006`
+30. Proxmox has successfully been installed and is redy to use
 
+Step 3 - Proxmox LXC creation
+--------
+
+#### Follow these steps to create a Proxmox container:
+
+###### Adding the CT Template:
+
+1. ssh into the pi. now use the root address, so in my case `ssh root@192.168.1.100`
+2. install git using `apt install git`
+2. clone this repo wherever you like using `git clone https://github.com/DanieleMassa/proxmoxOnRPI5`
+2. `cd proxmoxOnRPI5`
+3. `mv OS_PROXMOX_DEBIAN12.tar.xz /var/lib/vz/template/cache/`
+
+
+
+    
