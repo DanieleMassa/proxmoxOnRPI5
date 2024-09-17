@@ -110,38 +110,88 @@ Step 3 - Proxmox LXC creation
 
 1. Click on `Create CT` in the top right corner
 
-![](images/createContainer.png)
+![](images/createCT.png)
 
 2. In the `Hostname` textbox write the container name, in my case `debian`
 
 ![](images/createCT_General1.png)
 
-3. Set a password and confirm it, then click Next
+3. Set a password and confirm it, then click `Next`
 
 ![](images/createCT_General2.png)
 
-4. In the `Template` select the `OS_PROXMOX_DEBIAN12.tar.xz` file you've downloaded early, then click Next
+4. In the `Template` select the `OS_PROXMOX_DEBIAN12.tar.xz` file you've downloaded early, then click `Next`
 
 ![](images/createCT_Template.png)
 
-5. Select the disk size and click Next
+5. Select the disk size and click `Next`
 
 ![](images/createCT_Disks.png)
 
-6. Select the number of cores and click Next
+6. Select the number of cores and click `Next`
 
 ![](images/createCT_CPU.png)
 
-7. Choose how much RAM and SWAP your container should have and click Next
+7. Choose how much RAM and SWAP your container should have and click `Next`
 
 ![](/images/createCT_Memory.png)
 
-8. Leave the network and the DNS as it is and click Next. Then click Finish to create the container
+8. Leave the network and the DNS as it is and click `Next`. Then click `Finish` to create the container
 
 ![](images/createCT_Network.png)
 
+Step 4 - Proxmox VM creation
+--------
 
+1. Click on `local (hostname)` in the left tab, then select ISO Images
 
+![](images/createVM.png)
 
+2. Look for an arm64 ISO image and copy the download link
+3. Then click on `Download from URL`, paste the link and click on `Query URL`, then `Download`. I'll be using [debian](https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-12.7.0-arm64-netinst.iso)
 
-    
+![](images/createVM_Download.png)
+
+4. Now click on `Create VM` in the top right corner and enter a hostname. Then click `Next`
+
+![](images/createVM_General.png)
+
+5. On the OS tab click on `Do not use any media`, then click `Next`
+
+![](images/createVM_OS.png)
+
+6. Leave the System tab as default and choose the disk size in the Disks tab, then click `Next`
+
+![](images/createVM_Disks.png)
+
+7. Choose the number of core and click `Next`
+
+![](images/createVM_CPU.png)
+
+8. Choose the RAM amount and click `Next`
+
+![](images/createVM_RAM.png)
+
+9. Leave the Network tab as default and click on `Finish` to create the VM
+
+![](images/createVM_Finish.png)
+
+10. Once created, open the Hardware configuration and edit the `BIOS`, setting it to `OVMF (UEFI)`
+
+![](images/createVM_BIOS.png)
+
+11. Now delete the existing `CD/DVD Drive` and create a new one, setting the `Bus` to `SCSI` and leaving the `Device` as default. In the `Storage` section select `local` and in the `ISO Image` section select the ISO you've downloaded previously
+
+![](images/createVM_CD.png)
+
+12. Now create an `EFI Disk` setting the `EFI Storage` to `local`, leave the rest as default
+
+![](images/createVM_EFI.png)
+
+13. Now go to options and edit the `Boot Order`, placing the ISO on top of the list, then click `OK`
+
+![](images/createVM_Boot.png)
+
+14. Now run the VM and install the system, after that go back on the `Boot Order` menu and place back the VM drive on top, after this you can use the vm
+
+![](images/createVM_FinalBootOrder.png)
